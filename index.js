@@ -73,7 +73,7 @@ app.get("/musica/:id", (request, response) => {
     });
 });
 
-// Rota ajustada para /editar/:id conforme exigido pela plataforma
+
 app.put("/editar/:id", (request, response) => {
     const { id } = request.params;
     const { titulo, artista, genero, ano, duracao } = request.body;
@@ -90,7 +90,7 @@ app.put("/editar/:id", (request, response) => {
     });
 });
 
-// O app.listen fica SEMPRE no final de tudo
+
 app.listen(3000, () => {
     console.log("Servidor online")
 })
