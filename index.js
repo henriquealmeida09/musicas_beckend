@@ -32,4 +32,19 @@ app.listen(3000, () => {
     console.log("Servidor online")
 })
 
+app.post("/cadastrar", (request, response) => {
+    const { titulo, artista, genero, ano, duracao } = request.body;
+
+    const comandoInsert = "INSERT INTO musicas_henriquealmeida09(titulo, artista, genero, ano, duracao) VALUES (?, ?, ?, ?, ?)";
+
+    sql.query(comandoInsert, [titulo, artista, genero, ano, duracao], (error) => {
+        if (error) {
+            console.log(error);
+            return response.status(500).json({ erro: "Erro ao cadastrar música" });
+        }
+
+        return response.status(201).json({ mensagem: "Música cadastrada com sucesso!" });
+    });
+});
+
 export default app
